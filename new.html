@@ -1,0 +1,1591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ethiopian Orthodox Tewahedo Church - Student Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #5f0113; /* Your original deep red */
+      --primary-light: rgba(95, 1, 19, 0.1); /* Your original */
+      --secondary: #f3c913; /* Your original gold */
+      --secondary-light: rgba(243, 201, 19, 0.1); /* Your original */
+      --accent: #8a6d3b; /* Your original */
+      --text-dark: #2c3e50; /* Enhanced dark color for better readability */
+      --text-light: #f8f9fa;
+      --bg-light: #fff9f5; /* Warm ivory background */
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--primary);
+      line-height: 1.7;
+      background-color: var(--bg-light);
+    }
+    
+    /* Enhanced Navigation */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary) 0%, #4a000e 100%);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      padding: 0.8rem 0;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .navbar-brand, .nav-link {
+      color: var(--secondary) !important;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      transform: translateY(-2px);
+      text-shadow: 0 2px 5px rgba(243, 201, 19, 0.3);
+    }
+    
+    .logo-container {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      margin-right: 40px;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-container:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo {
+      height: 100%;
+      width: 50;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    /* Enhanced Buttons */
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary) 0%, #7a0119 100%);
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover, .btn-outline-primary:hover {
+      background: var(--secondary);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(243, 201, 19, 0.3);
+    }
+    
+    /* Your original registration button - unchanged */
+    .registration-btn {
+      background-color: var(--secondary);
+      color: var(--primary);
+      border: none;
+      font-weight: 500;
+    }
+    
+    .registration-btn:hover {
+      background-color: #d4b310;
+    }
+    
+    /* Your beloved Mahibere Kidusan section - completely unchanged */
+    .mahbere-section {
+      background-color: var(--primary-light);
+      padding: 50px 0;
+      margin: 50px 0;
+      border-top: 2px solid var(--secondary);
+      border-bottom: 2px solid var(--secondary);
+    }
+    
+    .mahbere-title {
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    
+    .mahbere-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+    }
+    
+    /* Your beloved Registration Form sections - completely unchanged */
+    .form-section {
+      background-color: var(--primary-light);
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      border-left: 4px solid var(--secondary);
+    }
+    
+    .form-section h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    /* Enhanced Feature Boxes */
+    .feature-box {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 25px;
+      height: 100%;
+      transition: all 0.4s ease;
+      box-shadow: var(--shadow);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-box:hover::before {
+      width: 8px;
+      background: var(--secondary);
+    }
+    
+    .feature-icon {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-box:hover .feature-icon {
+      transform: scale(1.1);
+      color: var(--secondary);
+    }
+    
+    /* Enhanced Memories Gallery */
+    .memories-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .memory-item {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.5s ease;
+      height: 280px;
+      position: relative;
+    }
+    
+    .memory-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .memory-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .memory-item:hover::after {
+      opacity: 1;
+    }
+    
+    .memory-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .memory-item:hover .memory-img {
+      transform: scale(1.1);
+    }
+    
+    /* Enhanced Checkbox Items */
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .checkbox-item {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    
+    .checkbox-item:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 5px 15px rgba(243, 201, 19, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Enhanced Language Badges */
+    .language-badge {
+      background-color: var(--secondary-light);
+      color: var(--primary);
+      margin-right: 8px;
+      margin-bottom: 8px;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-weight: 500;
+      display: inline-block;
+      border: 1px solid var(--secondary);
+      transition: all 0.2s ease;
+    }
+    
+    .language-badge:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    /* Enhanced Form Elements */
+    .form-label {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .required-field::after {
+      content: " *";
+      color: #e74c3c;
+    }
+    
+    input, select, textarea {
+      border-radius: 8px !important;
+      padding: 12px 15px !important;
+      border: 1px solid #ddd !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 0.25rem rgba(95, 1, 19, 0.1) !important;
+    }
+    
+    /* Enhanced Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary) 0%, #4a000e 100%);
+      padding: 50px 0 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--secondary);
+    }
+    
+    footer p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 15px;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    section {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7a0119;
+    }
+    
+    @media (max-width: 768px) {
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-box {
+        padding: 20px;
+      }
+      
+      .memory-item {
+        height: 220px;
+      }
+    }
+    .social-media-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .social-icon {
+    color: white;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+  }
+  
+  .fa-tiktok:hover { color: #69C9D0; }
+  .fa-telegram:hover { color: #0088cc; }
+  .fa-youtube:hover { color: #FF0000; }
+  .fa-instagram:hover { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-items: first baseline;
+  }
+    /* Original contact section (replace this in your CSS) */
+#contact {
+  background: var(--secondary); /* Using your gold color variable */
+  color: var(--primary); /* Dark text for contrast */
+  padding: 60px 0;
+  position: relative;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--primary); /* Primary color stripe */
+}
+
+#contact .btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+#contact .btn-primary:hover {
+  background: white;
+  color: var(--primary);
+}
+
+#contact .form-control {
+  border: 2px solid var(--primary);
+}
+
+#contact .social-icons a {
+  color: var(--primary);
+  background: rgba(255,255,255,0.2);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+#contact .social-icons a:hover {
+  background: var(--primary);
+  color: var(--secondary);
+  transform: translateY(-3px);
+}
+/* ===== Home Section Enhancements ===== */
+#home {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), 
+              url('church-bg.jpg') center/cover no-repeat;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--secondary);
+}
+
+#home h1 {
+  color: var(--primary);
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#home h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: var(--secondary);
+}
+
+#home .lead {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+#home p {
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+#home .btn-primary {
+  background: var(--primary);
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#home .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+#home .btn-primary:hover {
+  color: var(--primary);
+}
+
+#home .btn-primary:hover::before {
+  left: 0;
+}
+
+#home .img-fluid {
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 5px solid white;
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: all 0.5s ease;
+}
+
+#home .img-fluid:hover {
+  transform: perspective(1000px) rotateY(0deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this if you want a decorative element */
+.home-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url('ethiopian-cross-pattern.png') center/contain no-repeat;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.home-decoration-1 {
+  top: 10%;
+  left: 5%;
+}
+
+.home-decoration-2 {
+  bottom: 10%;
+  right: 5%;
+  transform: rotate(180deg);
+}
+/* Progress Bar Styles */
+.progress-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+}
+
+.step-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  position: relative;
+}
+
+.step-text::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.progress {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  transition: width 0.5s ease;
+}
+/* Simple Attractive Radio Buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}
+
+.radio-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.radio-button {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.radio-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.radio-input:checked + .radio-label .radio-button {
+  border-color: var(--secondary);
+}
+
+.radio-input:checked + .radio-label .radio-button::after {
+  opacity: 1;
+}
+
+.radio-input:focus + .radio-label .radio-button {
+  box-shadow: 0 0 0 3px rgba(243, 201, 19, 0.3);
+}
+
+.radio-label:hover .radio-button {
+  border-color: var(--secondary);
+}
+
+.radio-text {
+  color: var(--primary);
+  font-weight: 500;
+}
+/* Enhanced Checkbox Styles with Limit Indicator */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.checkbox-item:hover {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: var(--primary);
+}
+
+.checkbox-item.reached-limit {
+  opacity: 0.6;
+}
+
+.checkbox-item.reached-limit:not(.selected) {
+  pointer-events: none;
+}
+
+.selection-counter {
+  color: var(--primary);
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--secondary-light);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+#selectedCount {
+  font-weight: bold;
+  color: var(--primary);
+}
+.form-floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-floating label {
+    color: #495057;
+    transition: all 0.2s ease;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .form-floating > .form-control {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+  }
+  
+  .form-floating > .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
+  }
+  
+  .required:after {
+    content: " *";
+    color: #dc3545;
+  }
+  
+  .invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+  }
+  
+  .form-control:invalid ~ .invalid-feedback {
+    display: block;
+  }
+
+</style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <div class="logo-container">
+        <img src="logo.PNG" alt="Church Logo" class="logo">
+      </div>
+      <a class="navbar-brand" href="#">የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#memories">Memories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-2">
+            <button id="showFormBtn" class="btn registration-btn">
+              <i class="fas fa-user-plus me-1"></i> Registration
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Landing Page Section -->
+  <section id="home" class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 mb-4">የተማሪዎች መመዝገብያ ቅፅ</h1>
+        <p class="lead mb-4">እንኳን ወደ ሀሮማያ ዩኒቨርሲቲ የኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተ ክርስቲያን የተማሪዎች ምዝገባ ሥርዓት በሰላም አደረሳችሁ</p>
+        <p>መንፈሳዊ ማህበረሰባችንን ይቀላቀሉ እና በተለያዩ የቤተ ክርስቲያን ተግባራት፣ የመጽሐፍ ቅዱስ ጥናቶች እና የሃይማኖት ትምህርት ፕሮግራሞች ላይ ይሳተፉ።</p>
+        <button id="showFormBtn2" class="btn btn-primary btn-lg mt-3">
+          <i class="fas fa-user-plus me-2"></i> አሁን ይመዝገቡ
+        </button>
+      </div>
+      <div class="col-lg-6">
+        <img src="img.jpg" alt="Church Community" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </section>
+
+  <!-- Mahibere Kidusan Section -->
+  <section id="mahbere" class="mahbere-section">
+    <div class="container text-center">
+      <h2 class="mahbere-title">About Mahibere Kidusan</h2>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <p class="lead">ማኅበረ ቅዱሳን በኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ውስጥ በጸሎት፣ በጾም እና በሃይማኖት ጥናት እምነትን ለማጥለቅ የተቋቋመ መንፈሳዊ ማኅበር ነው።</p>
+          <p>የሀሮማያ ዩኒቨርሲቲ የኛ የተማሪ ምእራፍ መደበኛ የጸሎት ስብሰባዎች፣ የመጽሐፍ ቅዱስ ጥናት ክፍለ ጊዜዎች እና መንፈሳዊ ውይይቶችን በማዘጋጀት አባላት በአካዳሚክ ልህቀት እየተከታተሉ በእምነታቸው እንዲያድጉ ለመርዳት።</p>
+          <p>የሳምንቱ ረቡዕ ምሽት ለሳምንታዊ መንፈሳዊ ስብሰባችን እና በእያንዳንዱ እሁድ ለልዩ የጸሎት ክፍለ ጊዜዎች ይቀላቀሉን።</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container py-5">
+    <div class="row text-center mb-5">
+      <div class="col">
+        <h2>Our Services</h2>
+        <p class="lead">ለተማሪ ማህበረሰባችን የምናቀርበው</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-bible"></i>
+          </div>
+          <h3>ትምህርት</h3>
+          <p>ብሉይ እና አዲስ ኪዳንን የሚሸፍኑ ሳምንታዊ ጥልቅ የመጽሐፍ ቅዱስ ጥናት ክፍለ ጊዜ ልምድ ካላቸው አስተማሪዎች ጋር።</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-pray"></i>
+          </div>
+          <h3>የጸሎት አገልግሎቶች</h3>
+          <p>የኢትዮጵያ ኦርቶዶክስ ትውፊትን ተከትሎ የጠዋት እና የማታ ጸሎቶችን ጨምሮ የየቀኑ የጸሎት አገልግሎቶች።</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>የወጣቶች ሚኒስቴር</h3>
+          <p>በተለይ ለወጣቶች መንፈሳዊ እድገት እና ማህበረሰብ ግንባታ የተነደፉ ተግባራት እና ፕሮግራሞች።</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-light py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <video width="640" height="360" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        </div>
+        <div class="col-lg-6">
+          <h2 class="mb-4">About Our Church</h2>
+          <p>ሐረማያ ዩኒቨርሲቲ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ከተመሠረተበት ጊዜ ጀምሮ የተማሪዎችን እና የሠራተኞችን መንፈሳዊ አገልግሎት ስትሰጥ ቆይታለች።</p>
+          <p>ለኦርቶዶክስ እምነት ተከታይ ተማሪዎች የከፍተኛ ትምህርት እየተከታተሉ እምነታቸውን እንዲጠብቁ እናግዛቸዋለን።</p>
+          <p>ቤተ ክርስቲያናችን የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያንን ጥንታዊ ትውፊት በመከተል የዩንቨርስቲ ተማሪዎችን ወቅታዊ ፍላጎት እየፈታች ነው።</p>
+          <a href="#" class="btn btn-outline-primary mt-3">ተጨማሪ እወቅ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memories Section -->
+  <section id="memories" class="py-5">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col">
+          <h2>Our Memories</h2>
+          <p class="lead">በአንድነት መንፈሳዊ ጉዟችን ትውስታዎችን</p>
+        </div>
+      </div>
+      <div class="memories-gallery">
+        <div class="memory-item">
+          <img src="img3.jpg" alt="Church Event 1" class="memory-img">
+        </div>
+        <div class="memory-item">
+          <img src="img1.jpg" alt="Church Event 2" class="memory-img">
+        </div>
+        <div class="memory-item">
+          <img src="img.jpg" alt="Church Event 3" class="memory-img">
+        </div>
+        <div class="memory-item">
+          <img src="img2.jpg" alt="Church Event 4" class="memory-img">
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">ተጨማሪ ትውስታዎችን ይመልከቱ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-yellow py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="mb-4">Contact Us</h2>
+          <p><i class="fas fa-map-marker-alt me-2"></i> ሀረማያ ዩኒቨርሲቲ ፣ ኢትዮጵያ</p>
+          <p><i class="fas fa-phone me-2"></i> +251 123 456 789</p>
+          <p><i class="fas fa-envelope me-2"></i> info@eotc-haramaya.org</p>
+          <div class="mt-4 social-media-links">
+            <a href="https://vm.tiktok.com/ZMB9pPq7G/" target="_blank" class="social-icon me-4">
+              <i class="fab fa-tiktok fa-2x"></i>
+            </a>
+            <a href="https://t.me/hu_gibi_gubae" target="_blank" class="social-icon me-4">
+              <i class="fab fa-telegram fa-2x"></i>
+            </a>
+            <a href="https://youtube.com/@korebmedia28?si=hHxIkMBcT3NQX8Q1" target="_blank" class="social-icon me-4">
+              <i class="fab fa-youtube fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com/reel/DHxgARqCMrc/?igsh=MXkyMjVqOHZhcDRwZg==" target="_blank" class="social-icon">
+              <i class="fab fa-instagram fa-2x"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="mb-4">Send Us a Message</h3>
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">መልእክት ላክ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section (Initially Hidden) -->
+  <section id="formSection" class="container mb-5" style="display: none;">
+    <div class="container-fluid py-3">
+      <header class="text-center">
+        <h1 class="display-6">የተማሪዎች መመዝገብያ ቅፅ</h1>
+        <p class="lead">እባክዎ ሁሉንም አስፈላጊ መስኮች ይሙሉ</p>
+      </header>
+    </div>
+    
+    <form id="registrationForm" class="row g-3 needs-validation" novalidate>
+      <!-- Progress bar -->
+<div class="progress-container mb-4">
+  <div class="d-flex justify-content-between mb-1">
+    <span class="step-text">የግል መረጃ</span>
+    <span class="step-text">ስላሉበት ካንፓስ መረጃ</span>
+    <span class="step-text">የሚገኙበት ቦታ መረጃ
+    </span>
+    <span class="step-text">ከዚህ በፊት በአካባቢዎ ሲሳተፉ የነበረበት</span>
+    <span class="step-text">ካህነት ካለዎት ምልከት ያድርጉ</span>
+    <span class="step-text">የሚገኙበት አድራሻ</span>
+    <span class="step-text">ተጨማሪ</span>
+  </div>
+  <div class="progress" style="height: 10px;">
+    <div id="formProgress" class="progress-bar" role="progressbar" style="width: 0%; background-color: var(--secondary);"></div>
+  </div>
+</div>
+      <!-- Personal Information Section -->
+      <div class="form-section col-12">
+        <h2>የግል መረጃ</h2>
+        <h4>የትምህርት ተቋሙ ስም ሐረማያ ዩኒቨርስቲ</h4>
+        
+        <div class="col-md-6 mb-3">
+          <label for="fullName" class="form-label required-field">የተማሪው ሙሉ ስም</label>
+          <input type="text" class="form-control" id="fullName" required>
+          <div class="invalid-feedback">እባኮን ሙሉ ስሞን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="photoUpload" class="form-label required-field">ፎቶዎን ያስገቡ</label>
+          <input type="file" class="form-control" id="photoUpload" accept="image/*" required>
+          <div class="invalid-feedback">እባኮን ፎቶዎን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="christianName" class="form-label required-field">የክርስትና ስም</label>
+          <input type="text" class="form-control" id="christianName" required>
+          <div class="invalid-feedback">እባኮን የክርስትና ስሞን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="gender" class="form-label required-field">ፆታ</label>
+          <select class="form-select" id="gender" required>
+            <option value="">ይምረጡ...</option>
+            <option value="male">ወንድ</option>
+            <option value="female">ሴት</option>
+          </select>
+          <div class="invalid-feedback">ፆታ ይምረጡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="birthDate" class="form-label required-field">የትውልድ ቀን</label>
+          <input type="date" class="form-control" id="birthDate" required>
+          <div class="invalid-feedback">እባኮን የ ትውልድ ቀኖን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="stream" class="form-label required-field">የ ትምህርት ዘርፍ</label>
+          <input type="text" class="form-control" id="stream" required>
+          <div class="invalid-feedback">እባኮን የ ትምህርት ዘርፎን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="idNumber" class="form-label required-field">የተማሪ መለያ ቁጥር</label>
+          <input type="text" class="form-control" id="idNumber" required>
+          <div class="invalid-feedback">እባኮን የተማሪ መለያ ቁጥር ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="academicYear" class="form-label required-field">የትምህርት ዘመን</label>
+          <input type="text" class="form-control" id="academicYear" required>
+          <div class="invalid-feedback">እባኮን የትምህርት ዘመን ያስገቡ</div>
+        </div>
+      </div>
+      
+      <!-- Campus Information Section -->
+      <div class="form-section col-12">
+        <h2>ስላሉበት ካንፓስ መረጃ</h2>
+        
+        <div class="col-md-4 mb-3">
+          <label for="campus" class="form-label required-field">የተመደቡበት ካምፓስ</label>
+          <select class="form-select" id="campus" required>
+            <option value="">ይምረጡ...</option>
+            <option value="gendeje">ገንደጄ</option>
+            <option value="main">ሜን</option>
+            <option value="station">ስቴሽን</option>
+          </select>
+          <div class="invalid-feedback">የተመደቡበትን ካምፓስ ይሙሉ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="buildingId" class="form-label required-field">የተመደቡበት ህንፃ</label>
+          <input type="text" class="form-control" id="buildingId" required>
+          <div class="invalid-feedback">እባኮን የ ህንፃ ቁጥሮን ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="dormNumber" class="form-label required-field">ዶርም ቁጥር</label>
+          <input type="text" class="form-control" id="dormNumber" required>
+          <div class="invalid-feedback">እባኮን የ ዶርም ቁጥሮን ያስገቡ</div>
+        </div>
+      </div>
+      
+      <!-- Location Information Section -->
+      <div class="form-section col-12">
+        <h2>የሚገኙበት ቦታ መረጃ</h2>
+        
+        <div class="col-md-4 mb-3">
+          <label for="region" class="form-label required-field">ክልል</label>
+          <input type="text" class="form-control" id="region" required>
+          <div class="invalid-feedback">ክልል ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="zone" class="form-label">ዞን</label>
+          <input type="text" class="form-control" id="zone">
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="wereda" class="form-label">ወረዳ</label>
+          <input type="text" class="form-control" id="wereda">
+        </div>
+        
+        <div class="row g-3">
+          <!-- Language Section -->
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="language" placeholder=" " required>
+              <label for="language" class="required">የአፍ መፍቻ ቋንቋ</label>
+              <div class="invalid-feedback">
+                እባክዎ የአፍ መፍቻ ቋንቋዎን ያስገቡ
+              </div>
+            </div>
+          </div>
+        
+          <!-- Additional Language Section -->
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="additional-language" placeholder=" ">
+              <label for="additional-language">ተጨማሪ መናገር ሚችሏቸው ቋንቋ ካለ</label>
+            </div>
+          </div>
+        </div>
+        
+      
+      <!-- Participation Information Section -->
+      <div class="form-section col-12">
+        <h2>ከዚህ በፊት በአካባቢዎ ሲሳተፉ የነበረበት</h2>
+        
+        <div class="col-md-6 mb-3">
+          <label for="church" class="form-label required-field">ሀገረ ስብከት</label>
+          <input type="text" class="form-control" id="church" required>
+          <div class="invalid-feedback">ሀገረ ስብከት ያስገቡ</div>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="diocese" class="form-label required-field">አጥቢያ ቤተክርስቲያን</label>
+          <input type="text" class="form-control" id="diocese" required>
+          <div class="invalid-feedback">አጥቢያ ቤተክርስቲያን ሙሉ ስም ያስገቡ</div>
+        </div>
+        
+        <!-- Participation Information Section -->
+<div class="form-section col-12">
+  <h2>ከዚህ በፊት በአካባቢዎ ሲሳተፉ የነበረበት</h2>
+  
+  <div class="col-md-6 mb-3">
+    <label for="church" class="form-label required-field">ሀገረ ስብከት</label>
+    <input type="text" class="form-control" id="church" required>
+    <div class="invalid-feedback">ሀገረ ስብከት ያስገቡ</div>
+  </div>
+  
+  <div class="col-md-6 mb-3">
+    <label for="diocese" class="form-label required-field">አጥቢያ ቤተክርስቲያን</label>
+    <input type="text" class="form-control" id="diocese" required>
+    <div class="invalid-feedback">አጥቢያ ቤተክርስቲያን ሙሉ ስም ያስገቡ</div>
+  </div>
+  
+  <div class="col-md-6 mb-3">
+    <label for="school" class="form-label">ከዚህ በፊት በሰ/ት/ቤት ይሳተፉ ነበር?</label>
+    <select class="form-select" id="school" onchange="togglePlaceInput()">
+      <option value="">ይምረጡ...</option>
+      <option value="yes">አዎ</option>
+      <option value="no">አይ</option>
+    </select>
+  </div>
+  
+  <div class="col-md-6 mb-3" id="placeInputContainer" style="display: none;">
+    <label for="class" class="form-label">ቦታ ያስገቡ</label>
+    <input type="text" class="form-control" id="class">
+  </div>
+  
+  <div class="col-md-12 mb-3">
+    <label for="coursesTaken" class="form-label">Courses Taken (Select all that apply)</label>
+  </div>
+</div>
+        
+        <div class="col-md-12 mb-3">
+          <label for="coursesTaken" class="form-label">Courses Taken (Select all that apply)</label>
+          <select class="form-select" id="coursesTaken" multiple>
+            <option value="bible_study">የመጽሐፍ ቅዱስ ጥናት</option>
+            <option value="hymns_training">የመዝሙር ስልጠና</option>
+            <option value="church_history">የቤተ ክርስቲያን ታሪክ</option>
+            <option value="theology">ሥነ መለኮት</option>
+          </select>
+          <div id="selectedCourses" class="mt-2"></div>
+        </div>
+      </div>
+      
+      <!-- Priesthood Information Section -->
+      <div class="form-section col-12">
+        <h2>ካህነት ካለዎት ምልከት ያድርጉ</h2>
+        
+        <!-- Priesthood Information Section -->
+
+
+ <!-- Priesthood Information Section -->
+<div class="form-section col-12">
+  <h2>ካህነት ካለዎት ምልከት ያድርጉ</h2>
+  
+  <div class="mb-3">
+    <label class="form-label">የካህናት ደረጃ</label>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input class="radio-input" type="radio" name="priesthoodRank" id="noRank" value="" checked>
+        <label class="radio-label" for="noRank">
+          <span class="radio-button"></span>
+          <span class="radio-text">የለኝም</span>
+        </label>
+      </div>
+      <div class="radio-option">
+        <input class="radio-input" type="radio" name="priesthoodRank" id="deyakon" value="deyakon">
+        <label class="radio-label" for="deyakon">
+          <span class="radio-button"></span>
+          <span class="radio-text">ዲያቆን</span>
+        </label>
+      </div>
+      <div class="radio-option">
+        <input class="radio-input" type="radio" name="priesthoodRank" id="kesis" value="kesis">
+        <label class="radio-label" for="kesis">
+          <span class="radio-button"></span>
+          <span class="radio-text">ቄስ</span>
+        </label>
+      </div>
+      <div class="radio-option">
+        <input class="radio-input" type="radio" name="priesthoodRank" id="memhir" value="memhir">
+        <label class="radio-label" for="memhir">
+          <span class="radio-button"></span>
+          <span class="radio-text">መርጌታ</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional fields (initially hidden) -->
+  <div id="priesthoodFields" style="display: none;">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="takenYear" class="form-label required-field">ክህነት የተቀበሉበት ዘመን</label>
+        <input type="number" class="form-control" id="takenYear" min="1900" max="2099" required>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <label for="diocesePriesthood" class="form-label required-field">ሀገረ ስብከት</label>
+        <input type="text" class="form-control" id="diocesePriesthood" required>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <label for="giverBishop" class="form-label required-field">ክህነት የሰጠው ጳጳስ ስም</label>
+        <input type="text" class="form-control" id="giverBishop" required>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      <!-- Contact Information Section -->
+      <div class="form-section col-12">
+        <h2>የሚገኙበት አድራሻ</h2>
+        
+        <div class="col-md-4 mb-3">
+          <label for="mobile" class="form-label required-field">ሞባይል</label>
+          <input type="tel" class="form-control" id="mobile" pattern="[0-9]{10}" required>
+          <div class="invalid-feedback">እባኮን ትክክለኛ ስልክ ቁጥር ያስገቡ (10 አሃዞች)</div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="email" class="form-label">ኢሜይል</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="telegram" class="form-label">ቴሌግራም</label>
+          <input type="text" class="form-control" id="telegram">
+        </div>
+      </div>
+      <div class="form-section col-12">
+        <h2>Additional Information</h2>
+        
+        <div class="col-md-6 mb-3">
+          <label class="form-label">ማገልገል የሚፈልጉበት ክፍል (Select maximum 3 options)</label>
+          <div class="checkbox-group" id="servicePreference">
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_study" name="preferred_class" value="study">
+              <label for="class_study">ትምህርት ከፍል</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_music" name="preferred_class" value="music">
+              <label for="class_music">መዝሙር ክፍል</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_language" name="preferred_class" value="language">
+              <label for="class_language">ቋንቋና ልዩ ፍላጎት ክፍል</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_development" name="preferred_class" value="development">
+              <label for="class_development">ልማት ክፍል</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_art" name="preferred_class" value="art">
+              <label for="class_art">ሙያና ተራድአ</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_members" name="preferred_class" value="members">
+              <label for="class_members">አባላት ጕዳይ</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="class_finance" name="preferred_class" value="finance">
+              <label for="class_finance">ሒሳብና ንብረት</label>
+            </div>
+          </div>
+          <div class="selection-counter mt-2">
+            <small>Selected: <span id="selectedCount">0</span>/3</small>
+          </div>
+        </div>
+      
+        <!-- Other form fields... -->
+      </div>
+      
+        <div class="col-md-6 mb-3">
+          <label for="specialTalents" class="form-label">ያልዎት ልዩ ተሰጥኦ ወይም ዝንባሌ</label>
+          <textarea class="form-control" id="specialTalents" rows="4"></textarea>
+        </div>
+      </div>
+      
+      <!-- Submit Section -->
+      <div class="col-12 mt-4">
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+          <label class="form-check-label" for="agreeTerms">በደንቦቹ እና ሁኔታዎች እስማማለሁ።</label>
+          <div class="invalid-feedback">ከማቅረቡ በፊት መስማማት አለቦት።</div>
+        </div>
+        
+        <button class="btn btn-primary me-2" type="submit">
+          <i class="fas fa-paper-plane me-1"></i> Submit Registration|ምዝገባ አስገባ
+        </button>
+        <button class="btn btn-outline-secondary" type="reset">
+          <i class="fas fa-undo me-1"></i> Reset Form | ቅጽ ዳግም አስጀምር
+        </button>
+        <button id="backToHome" class="btn btn-outline-primary ms-2" type="button">
+          <i class="fas fa-home me-1"></i> Back to Home|ወደ ቤት ተመለስ
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-center py-6" style="color: #ffc107;">
+    <div class="container">
+      <div class="logo-container mx-auto mb-4" style="width: 120px;">
+        <img src="logo.PNG" alt="Church Logo" class="logo" style="width: 100%; height: auto;">
+      </div>
+      <p class="mb-2 fs-5">የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን - ሐረማያ ዩኒቨርሲቲ</p>
+      <p class="mb-0">© <span id="currentYear"></span> ሁሉም መብቶች የተጠበቁ ናቸው።</p>
+    </div>
+</footer>
+
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+     document.getElementById('currentYear').textContent = new Date().getFullYear();
+function togglePlaceInput() {
+  const schoolSelect = document.getElementById('school');
+  const placeInputContainer = document.getElementById('placeInputContainer');
+  
+  if (schoolSelect.value === 'yes') {
+    placeInputContainer.style.display = 'block';
+  } else {
+    placeInputContainer.style.display = 'none';
+  }
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+  const checkboxes = document.querySelectorAll('#servicePreference input[type="checkbox"]');
+  const selectedCount = document.getElementById('selectedCount');
+  let count = 0;
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const parentItem = this.closest('.checkbox-item');
+      
+      if (this.checked) {
+        count++;
+        parentItem.classList.add('selected');
+      } else {
+        count--;
+        parentItem.classList.remove('selected');
+      }
+
+      selectedCount.textContent = count;
+
+      // Apply limit logic
+      if (count >= 3) {
+        checkboxes.forEach(cb => {
+          const item = cb.closest('.checkbox-item');
+          if (!cb.checked) {
+            item.classList.add('reached-limit');
+          }
+        });
+      } else {
+        checkboxes.forEach(cb => {
+          cb.closest('.checkbox-item').classList.remove('reached-limit');
+        });
+      }
+    });
+  });
+});
+    document.addEventListener('DOMContentLoaded', function() {
+  const rankRadios = document.querySelectorAll('input[name="priesthoodRank"]');
+  const priesthoodFields = document.getElementById('priesthoodFields');
+  
+  rankRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'deyakon' || this.value === 'kesis' || this.value === 'memhir') {
+        priesthoodFields.style.display = 'block';
+        // Set fields as required when visible
+        document.getElementById('takenYear').required = true;
+        document.getElementById('diocesePriesthood').required = true;
+        document.getElementById('giverBishop').required = true;
+      } else {
+        priesthoodFields.style.display = 'none';
+        // Remove required when hidden
+        document.getElementById('takenYear').required = false;
+        document.getElementById('diocesePriesthood').required = false;
+        document.getElementById('giverBishop').required = false;
+      }
+    });
+  });
+});
+    // Form Progress Tracking
+document.addEventListener('DOMContentLoaded', function() {
+  const formSections = document.querySelectorAll('.form-section');
+  const progressBar = document.getElementById('formProgress');
+  const stepTexts = document.querySelectorAll('.step-text');
+  
+  // Update progress when scrolling through form
+  function updateProgress() {
+    const formRect = document.getElementById('registrationForm').getBoundingClientRect();
+    const formTop = formRect.top;
+    const formHeight = formRect.height;
+    const windowHeight = window.innerHeight;
+    
+    formSections.forEach((section, index) => {
+      const sectionRect = section.getBoundingClientRect();
+      if (sectionRect.top <= windowHeight * 0.3) {
+        stepTexts[index].style.color = 'var(--primary)';
+        stepTexts[index].style.fontWeight = 'bold';
+        stepTexts[index].querySelector('::after').style.background = 'var(--secondary)';
+      }
+    });
+    
+    const scrollPosition = window.scrollY - formTop;
+    const progressPercentage = Math.min(100, Math.max(0, (scrollPosition / (formHeight - windowHeight)) * 100));
+    progressBar.style.width = `${progressPercentage}%`;
+  }
+  
+  // Update on scroll and load
+  window.addEventListener('scroll', updateProgress);
+  updateProgress();
+  
+  // Also update when clicking on form fields
+  document.querySelectorAll('.form-control, .form-select').forEach(field => {
+    field.addEventListener('focus', function() {
+      const section = this.closest('.form-section');
+      const sectionIndex = Array.from(formSections).indexOf(section);
+      const progressPercentage = (sectionIndex / (formSections.length - 1)) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+      
+      // Update step indicators
+      stepTexts.forEach((step, i) => {
+        if (i <= sectionIndex) {
+          step.style.color = 'var(--primary)';
+          step.style.fontWeight = 'bold';
+          step.querySelector('::after').style.background = 'var(--secondary)';
+        } else {
+          step.style.color = 'var(--primary)';
+          step.style.fontWeight = 'normal';
+          step.querySelector('::after').style.background = '#ddd';
+        }
+      });
+    });
+  });
+});
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Show/hide form section
+    const showFormBtns = [document.getElementById('showFormBtn'), document.getElementById('showFormBtn2')];
+    const backToHomeBtn = document.getElementById('backToHome');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = ['home', 'mahbere', 'about', 'memories', 'contact', 'formSection'];
+    
+    // Show form when registration buttons are clicked
+    showFormBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showOnlySection('formSection');
+        });
+    });
+    
+    // Back to home button shows landing page
+    backToHomeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showOnlySection('home');
+    });
+    
+    // Navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('href').substring(1);
+            showOnlySection(target);
+        });
+    });
+    
+    // Function to show only one section and hide others
+    function showOnlySection(sectionToShow) {
+        sections.forEach(section => {
+            const el = document.getElementById(section);
+            if (section === sectionToShow) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+        
+        // Special case for home section which might have different styling
+        if (sectionToShow === 'home') {
+            document.getElementById('home').classList.add('container', 'py-5');
+        }
+        
+        window.scrollTo(0, 0);
+    }
+
+    // Display selected languages as badges
+    document.getElementById('languagesSpoken').addEventListener('change', function() {
+        const selected = Array.from(this.selectedOptions).map(option => option.text);
+        const container = document.getElementById('selectedLanguages');
+        container.innerHTML = selected.map(lang => 
+            `<span class="badge language-badge">${lang}</span>`
+        ).join('');
+    });
+
+    // Display selected courses as badges
+    document.getElementById('coursesTaken').addEventListener('change', function() {
+        const selected = Array.from(this.selectedOptions).map(option => option.text);
+        const container = document.getElementById('selectedCourses');
+        container.innerHTML = selected.map(course => 
+            `<span class="badge language-badge">${course}</span>`
+        ).join('');
+    });
+
+    // Form validation
+    (function () {
+        'use strict'
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        // Form is valid - you would typically submit to server here
+                        alert('Form submitted successfully!');
+                        showOnlySection('home');
+                        form.reset();
+                    }
+                    
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+    document.querySelectorAll('.form-floating .form-control').forEach(input => {
+    input.addEventListener('input', function() {
+      if (this.value) {
+        this.classList.add('has-value');
+      } else {
+        this.classList.remove('has-value');
+      }
+    });
+    
+    // Trigger check on page load
+    if (input.value) {
+      input.classList.add('has-value');
+    }
+  });
+</script>
+</body>
+</html>
